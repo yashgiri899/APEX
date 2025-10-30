@@ -185,4 +185,5 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-Developed with ❤️ by the APEX Team.
+Developed with ❤️ by the Yash giri.
+email: yashgiri803@gmail.com
