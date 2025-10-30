@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Analyzer Pro</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Bill Analyzer Pro</h1>
+        <p>Upload a medical bill to get a detailed analysis, powered by AI.</p>
+    </header>
+
+    <main>
+        <!-- UPLOAD SECTION -->
+        <section id="upload-section" class="card">
+            <h2>Upload Your Bill</h2>
+            <form id="upload-form">
+                <input type="file" id="file-input" name="file" accept=".pdf,.jpg,.jpeg,.png,.txt" required>
+                <button type="submit">Analyze Bill</button>
+            </form>
+        </section>
+
+        <!-- LOADING STATE -->
+        <div id="loading-state" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyzing your bill... This may take a moment.</p>
+        </div>
+
+        <!-- RESULTS SECTION -->
+        <section id="results-section" class="hidden">
+            <div id="summary-card" class="card">
+                <h2>Bill Summary</h2>
+                <div id="summary-content"></div>
+            </div>
+
+            <div id="flags-section">
+                <h2>Findings & Flags</h2>
+                <div id="flags-container"></div>
+            </div>
+
+            <div id="line-items-section" class="card">
+                <h2>Line Items</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CPT Code</th>
+                            <th>Description</th>
+                            <th>Billed Amount</th>
+                            <th>National Average</th>
+                        </tr>
+                    </thead>
+                    <tbody id="line-items-tbody"></tbody>
+                </table>
+            </div>
+             <div id="actions-section" class="card">
+                <h2>AI Assistant</h2>
+                <p>Get help understanding your bill or drafting an appeal.</p>
+                <div class="action-buttons">
+                    <button id="explain-btn">Explain This Bill</button>
+                    <button id="appeal-btn">Draft Appeal Letter</button>
+                </div>
+            </div>
+            <div id="debug-section" class="card">
+                <h2>Debugging: Raw Extracted Text</h2>
+                <pre id="raw-text-content"></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL FOR LLM RESPONSES -->
+    <div id="modal" class="hidden">
+        <div id="modal-content">
+            <h2 id="modal-title"></h2>
+            <div id="modal-spinner" class="spinner"></div>
+            <pre id="modal-text"></pre>
+            <div class="modal-actions">
+                 <button id="copy-btn">Copy to Clipboard</button>
+                 <button id="close-modal-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML Templates for Dynamic Content -->
+    <template id="flag-card-template">
+        <div class="flag-card">
+            <div class="flag-header">
+                <span class="flag-type"></span>
+                <strong class="flag-message"></strong>
+            </div>
+            <div class="confidence-bar-container">
+                <div class="confidence-bar"></div>
+            </div>
+            <div class="confidence-text"></div>
+        </div>
+    </template>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
